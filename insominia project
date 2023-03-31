@@ -1,0 +1,44 @@
+Delete Paciente http://localhost:8080/pacientes/2
+PUT Atualizar Medico http://localhost:8080/medicos
+PUT Atualizar Paciente http://localhost:8080/pacientes
+{
+	"id" :3,
+	"nome":"João Vitor"
+}
+Listar Paciente http://localhost:8080/pacientes?size=10&page=0&sort=nome
+Cadastrar paciente http://localhost:8080/pacientes
+
+{
+"nome": "Gabriela Oliveira",
+"email": "gabriela.oliveira@example.com",
+"cpf": "45678912345",
+"telefone": "(31) 777888999",
+"endereco": {
+"logradouro": "Avenida Central",
+"bairro": "Centro",
+"cep": "30110010",
+"cidade": "Belo Horizonte",
+"uf": "MG",
+"numero": "789",
+"complemento": "sala 10"
+}
+}
+
+Listar medicos http://localhost:8080/medicos?sort=nome
+Cadastro medicos http://localhost:8080/medicos
+{
+"nome": "Paulo Vinicius",
+"email": "PauloVinicius@voll.med",
+"crm": "155426",
+	"telefone":"970139925",
+"especialidade": "ORTOPEDIA",
+"endereco": {
+    "logradouro": "rua 2",
+    "bairro": "bairro 2",
+    "cep": "12345678",
+    "cidade": "Osasco",
+    "uf": "DF",
+    "numero": "1",
+    "complemento": "complemento"
+    }
+}
