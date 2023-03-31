@@ -1,6 +1,11 @@
 spring:
-      datasource:
-          url: jdbc:mysql://localhost/vollmed_api
-          username: root
-          password: Jh%k@S$%5KS
+  datasource:
+    url: jdbc:mysql://localhost/vollmed_api
+    username: root
+    password: Jh%k@S$%5KS
 
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
