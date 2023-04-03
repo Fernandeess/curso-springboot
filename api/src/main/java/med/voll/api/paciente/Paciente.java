@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.endereco.Endereco;
-import org.springframework.expression.spel.ast.BooleanLiteral;
+
 
 @Table(name = "pacientes") // nome da tabela
 @Entity(name = "paciente") // nome da entidade
@@ -36,8 +36,6 @@ public class Paciente {
         this.ativo = true;
     }
 
-    public Paciente(Paciente paciente) {
-    }
 
     public void atualizarInformacoes(DadosAtualizarPaciente dadosPaciente) {
         if (dadosPaciente.nome() != null) {
