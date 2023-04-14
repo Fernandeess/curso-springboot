@@ -11,7 +11,6 @@ public record DadosAtualizarPaciente(
         Long id,
         String nome,
 
-        String telefone,
-        Endereco endereco
+        String telefone
 ) {
 }

@@ -1,0 +1,1 @@
+ALTER TABLE enderecos CHANGE fkPaciente fk_paciente BIGINT;

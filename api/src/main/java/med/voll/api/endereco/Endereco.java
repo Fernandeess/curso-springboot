@@ -1,15 +1,23 @@
 package med.voll.api.endereco;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.paciente.Paciente;
 
-@Embeddable
+
+@Table(name = "enderecos")
+@Entity(name = "endereco")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String logradouro;
     private String bairro;
     private String cep;
@@ -17,14 +25,19 @@ public class Endereco {
     private String uf;
     private String complemento;
     private String numero;
+    @ManyToOne
+    @JoinColumn(name = "fk_paciente")
+    private Paciente paciente;
 
-    public Endereco(DadosEndereco dados) {
+
+    public Endereco(DadosCadastroEndereco dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();
         this.cep = dados.cep();
         this.uf = dados.uf();
         this.cidade = dados.cidade();
         this.numero = dados.numero();
+        this.paciente = dados.paciente();
         this.complemento = dados.complemento();
     }
 

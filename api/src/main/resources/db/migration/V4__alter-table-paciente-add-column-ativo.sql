@@ -1,4 +1,0 @@
-alter table pacientes add ativo tinyint not null;
-update pacientes set ativo = 1;
-alter table medicos add ativo tinyint not null;
-update medicos set ativo = 1;

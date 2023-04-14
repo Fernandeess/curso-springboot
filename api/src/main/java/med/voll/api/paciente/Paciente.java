@@ -6,6 +6,10 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.endereco.Endereco;
+import med.voll.api.medico.Medico;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Table(name = "pacientes") // nome da tabela
@@ -13,18 +17,24 @@ import med.voll.api.endereco.Endereco;
 @Getter //Geração dos Getters
 @NoArgsConstructor //Contrutor padrão sem parametros/argumentos
 @AllArgsConstructor //Contrutor padrão com todos os parametros/argumentos
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "paciente_id")
 public class Paciente {
     //ENTIDADE JPA Paciente
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long paciente_id;
     private String nome;
     private String email;
     private String cpf;
     private String telefone;
-    @Embedded
-    private Endereco endereco;
+    @OneToMany
+    @JoinColumn(name="id_endereco")
+    private List<Endereco> enderecos;
+    @ManyToMany @JoinTable(
+            name = "consultas",joinColumns = @JoinColumn(name = "fk_paciente"),
+            inverseJoinColumns = @JoinColumn(name = "fk_medico")
+    )
+    private List<Medico> medicos;
     private Boolean ativo;
 
     public Paciente(DadosCadastroPaciente dados) {
@@ -32,7 +42,6 @@ public class Paciente {
         this.email = dados.email();
         this.telefone = dados.telefone();
         this.cpf = dados.cpf();
-        this.endereco = dados.endereco();
         this.ativo = true;
     }
 
@@ -43,9 +52,6 @@ public class Paciente {
         }
         if (dadosPaciente.telefone() != null) {
             this.telefone = dadosPaciente.telefone();
-        }
-        if (dadosPaciente.endereco() != null) {
-            this.endereco.atualizarEndereco(dadosPaciente.endereco());
         }
 
     }

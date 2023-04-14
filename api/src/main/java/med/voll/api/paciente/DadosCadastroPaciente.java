@@ -16,9 +16,7 @@ DadosCadastroPaciente(
         @NotBlank
         String cpf,
         @NotBlank
-        String telefone,
-        @NotNull @Valid
-        Endereco endereco
+        String telefone
 
 )
         /*Aqui ficam os campos que chegão da requisição*/ {

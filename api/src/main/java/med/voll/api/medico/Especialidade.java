@@ -6,5 +6,6 @@ public enum Especialidade {
     ORTOPEDIA, CARDIOLOGIA, GINECOLOGIA, DERMATOLOGIA;
 
     public static interface MedicoRepository extends JpaRepository<Medico, Long> {
+
     }
 }
